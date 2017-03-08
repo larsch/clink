@@ -210,8 +210,8 @@
 ** avoids including 'stdio.h' everywhere.)
 */
 #if defined(LUA_LIB) || defined(lua_c)
-#include <stdio.h>
-#define luai_writestring(s,l)	fwrite((s), sizeof(char), (l), stdout)
+#include "write.h"
+#define luai_writestring(s,l)	clink_fwrite((s), sizeof(char), (l), stdout)
 #define luai_writeline()	(luai_writestring("\n", 1), fflush(stdout))
 #endif
 
